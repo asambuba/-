@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>FullScreen Video with Sound</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+    }
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: black;
+      color: white;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <video id="vid" playsinline>
+    <source src="https://cdn.discordapp.com/attachments/1360560964566647059/1360586300717006908/announcer_kill_rampage_01-VEED_online-video-cutter.com.mp4?ex=67fba83c&is=67fa56bc&hm=9c5d5745390d9d42f04c5323a69033145e3d38542f5266fb741db08e5dbaffa2" type="video/mp4">
+  </video>
+  <script>
+    const video = document.getElementById('vid')
+    const overlay = document.querySelector('.overlay')
+    document.body.addEventListener('click', () => {
+      overlay.remove()
+      video.style.display = 'block'
+      video.play()
+    }, { once: true })
+  </script>
+</body>
+</html>
